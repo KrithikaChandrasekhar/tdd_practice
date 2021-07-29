@@ -8,5 +8,5 @@ test: PrimeNumber_test
 PrimeNumber_test: PrimeNumber_test.o PrimeNumber.o
 
 .PHONY: clean
-clean:
+clean::
 	$(RM) PrimeNumber_test *.[adios]
