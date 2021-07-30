@@ -3,7 +3,7 @@ all: test
 
 .PHONY: test
 test: PrimeNumber_test
-	./PrimeNumber_test
+	./PrimeNumber_test 
 
 PrimeNumber_test: PrimeNumber_test.o PrimeNumber.o
 
