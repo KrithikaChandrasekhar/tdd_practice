@@ -20,6 +20,5 @@ int main(void) {
 	assert(isPrimeNumber(23));
 	assert(isPrimeNumber(29));
 	assert(!isPrimeNumber(49));
-	system("echo success");
 }
 
