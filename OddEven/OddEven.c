@@ -1,8 +1,5 @@
 #include "OddEven.h"
 
-bool iseven(int number) {
-	if(number % 2 == 0)
-	return true;
-	else
-	return false;
+bool isEven(int number) {
+	return (number % 2 == 0);
 }

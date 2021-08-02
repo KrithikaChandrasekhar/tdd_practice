@@ -2,8 +2,8 @@
 #include "OddEven.h"
 
 int main(void) {
-	assert(iseven(0));
-	assert(!iseven(1));
-	assert(iseven(2));
-	assert(!iseven(3));
+	assert(isEven(0));
+	assert(!isEven(1));
+	assert(isEven(2));
+	assert(!isEven(3));
 }
