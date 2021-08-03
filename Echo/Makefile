@@ -2,11 +2,11 @@
 all: test
 
 .PHONY: test
-test: echo
-	./echo "Hello"
+test: Echo
+	./Echo "Hello"
 
-echo_test: echo.o
+Echo: Echo.o
 
 .PHONY: clean
 clean::
-	$(RM) echo *.[adios]
+	$(RM) Echo *.[adios]
