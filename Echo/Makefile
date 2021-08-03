@@ -5,7 +5,7 @@ all: test
 test: echo
 	./echo "Hello"
 
-echo_test: echo.0
+echo_test: echo.o
 
 .PHONY: clean
 clean::
