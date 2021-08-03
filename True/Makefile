@@ -4,7 +4,7 @@ all: test
 .PHONY: test
 test: true
 	./true
-	echo $?
+	echo "$?"
 
 true: true.o
 
