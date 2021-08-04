@@ -2,12 +2,12 @@
 all: test
 
 .PHONY: test
-test: True
-	./True
-	echo "$?"
+test: true
+	./true
+	echo $$?
 
-True: True.o
+true: true.o
 
 .PHONY: clean
 clean::
-	$(RM) True *.[adios]
+	$(RM) true *.[adios]
