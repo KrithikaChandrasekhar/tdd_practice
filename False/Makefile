@@ -3,7 +3,7 @@ all: test
 
 .PHONY: test
 test: false
-	-./false
+	! ./false
 
 false: false.o
 
