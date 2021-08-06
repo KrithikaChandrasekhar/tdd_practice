@@ -19,5 +19,5 @@ int main(void) {
 	assert(!isPrimeNumber(15));
 	assert(isPrimeNumber(23));
 	assert(isPrimeNumber(29));
-	assert(!isPrimeNumber(49));
+	assert(!isPrimeNumber(143));
 }
