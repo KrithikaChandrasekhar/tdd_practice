@@ -9,9 +9,14 @@ test1: echo_removespace
 test2: echo_creatingnewline
 	./echo_creatingnewline
 
-echo: echo_removespace.o echo_creatingnewline.o
+.PHONY: test3
+test3: echo_horizontaltabspace
+	./echo_horizontaltabspace
+
+echo: echo_removespace.o echo_creatingnewline.o echo_horizontaltabspace.o
 
 .PHONY: clean
 clean::
 	$(RM) echo_removespace *.[adios]
 	$(RM) echo_creatingnewline *.[adios]
+	$(RM) echo_horizontaltabspace *.[adios]
