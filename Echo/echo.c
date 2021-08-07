@@ -3,7 +3,10 @@
 int main(void) {
 	char c;
 	c = getchar();
-	putchar (c);
+	while (c != '\n') {
+		putchar (c);
+		c = getchar();
+	}
 	printf("\n");
 	return 0;
 }
