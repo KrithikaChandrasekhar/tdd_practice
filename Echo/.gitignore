@@ -1,4 +1,4 @@
 *.[adios]
 echo_removespace
 echo_creatingnewline
-echo_horizontaltabspace
+echo_notrailingnewline
