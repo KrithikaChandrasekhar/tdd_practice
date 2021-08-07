@@ -3,6 +3,5 @@
 
 #include <stdbool.h>
 
-bool isPrimeNumber (unsigned int number);
-
+bool isPrimeNumber (int number);
 #endif
