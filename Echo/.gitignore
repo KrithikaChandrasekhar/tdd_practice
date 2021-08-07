@@ -1,2 +1,3 @@
 *.[adios]
-Echo
+echo_removespace
+echo_creatingnewline
