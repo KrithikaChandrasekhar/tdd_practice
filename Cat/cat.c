@@ -3,20 +3,17 @@
 
 #define DATA_SIZE 100
 
-int main()
-{
+int main(int argc, char* argv[]) {
     char data[DATA_SIZE];
     FILE * fPtr;
-    fPtr = fopen("text.txt", "r");
-    if (fPtr == NULL) {
-        printf(" Error in opening file \n");
-	return 0;
+    fPtr = fopen(argv[1], "r");
+    if (!fPtr || argc != 2) {
+        printf(" Error\n");
+        return EXIT_FAILURE;
     }
-    else printf("Opening text.txt file to read its contents: \n");
     if (fgets (data, DATA_SIZE, fPtr) != NULL) {
         puts(data);
         fclose(fPtr);
+        return EXIT_SUCCESS;
     }
-    printf("text.txt file closed. \n");
-    return 0;
 }
