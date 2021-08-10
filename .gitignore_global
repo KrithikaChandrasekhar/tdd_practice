@@ -1,9 +1,7 @@
 #Ignore all#
 *
 
-#Unignore all files with extension#
+#Unignore files #
 !*.[ch]
-
-#Tempory files#
-*~
-*.swp
+!Makefile
+!*.md
