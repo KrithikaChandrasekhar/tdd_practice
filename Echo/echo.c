@@ -1,13 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main (int argc, char *argv[]) {
-    int i;
-    if (argc <= 1) {
-        printf("Enter argument\n");
-    } else {
-        for (i=1; i<argc; i++) {
-	    printf( "%s", argv[i]);
-	    printf( "\n");
-	}
-     }
+int main()
+{
+    int result = printf("testing echo");
+    if (result > 0) {
+        printf("\n%d: characters written\n", result);
+	return EXIT_SUCCESS;
+    }
+    else return EXIT_FAILURE;
 }
