@@ -1,10 +1,19 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-void main() {
-	FILE *f;
-	char s;
-	f = fopen("new.txt","r");
-	while ((s = getc(f)) != EOF) {
-		printf("%c",s);
-	}
+#define DATA_SIZE 100
+
+int main()
+{
+    char data[DATA_SIZE];
+    FILE * fPtr;
+    fPtr = fopen("new.txt", "w");
+    printf("Enter contents to store in file : \n");
+    fgets(data, DATA_SIZE, stdin);
+
+    fputs(data, fPtr);
+    fclose(fPtr);
+    printf("File created and saved successfully. \n");
+
+    return 0;
 }
