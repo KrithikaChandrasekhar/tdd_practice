@@ -7,13 +7,16 @@ int main()
 {
     char data[DATA_SIZE];
     FILE * fPtr;
-    fPtr = fopen("new.txt", "w");
-    printf("Enter contents to store in file : \n");
-    fgets(data, DATA_SIZE, stdin);
-
-    fputs(data, fPtr);
-    fclose(fPtr);
-    printf("File created and saved successfully. \n");
-
+    fPtr = fopen("text.txt", "r");
+    if (fPtr == NULL) {
+        printf(" Error in opening file \n");
+	return 0;
+    }
+    else printf("Opening text.txt file to read its contents: \n");
+    if (fgets (data, DATA_SIZE, fPtr) != NULL) {
+        puts(data);
+        fclose(fPtr);
+    }
+    printf("text.txt file closed. \n");
     return 0;
 }

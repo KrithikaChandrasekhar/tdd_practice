@@ -1,0 +1,1 @@
+This program is an implementation of linux version of cat in c language.
