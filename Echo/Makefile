@@ -3,7 +3,7 @@ all: test
 
 .PHONY: test
 test: echo
-	./echo Hello World!
+	./echo *.[c]
 
 echo: echo.o
 
