@@ -3,7 +3,9 @@ all: test
 
 .PHONY: test
 test: cat
-	./cat
+	./cat text.txt
+	./cat text.txt hello.txt
+	./cat text.txt hi.txt
 
 cat: cat.o
 
