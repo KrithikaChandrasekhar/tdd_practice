@@ -10,4 +10,4 @@ as reference original(golden master testing).
 - When calling 'cat' without arguments, then it reads standard input.
 - When calling 'cat text.txt', then it prints the file on standard output.
 - When calling 'cat text.txt hello.txt', then it prints both the on standard output.
-- When calling 'cat text.txt hi.txt', then it prints text.txt file and "cat: no such file or directory" on the standard output.
+- When calling 'cat text.txt hi.txt', then it prints text.txt file and "cat:no such file or directory" on the standard output.
