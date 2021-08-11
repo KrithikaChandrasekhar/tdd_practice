@@ -7,7 +7,7 @@ int main(int argc, char* argv[]) {
     char data[DATA_SIZE];
     FILE * fPtr;
     int i = 1;
-    while (i ==1 && argc < 2) {
+    while (i == 1 && argc < 2) {
         gets(data);
         puts(data);
     }
