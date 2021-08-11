@@ -1,17 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
+# include <stdio.h>
 
-/*int main()
-{
-    int result = printf("testing echo");
-    if (result > 0) {
-        printf("\n%d: characters written\n", result);
-	return EXIT_SUCCESS;
-    }
-    else return EXIT_FAILURE;
-}*/
+int main(int argc, char* argv[]) {
+   int i;
+   if (argc > 1) {
+       for (i = 1; i < argc; i++)
+       puts(argv[i]);
+       }
 
-int main() {
-    printf(" \n %s \n", __FILE__);
-    printf("printing line %d of file \"%s\".\n", __LINE__,__FILE__);
+    else
+    puts(" ");
 }
