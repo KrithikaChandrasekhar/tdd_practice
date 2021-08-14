@@ -1,13 +1,16 @@
+ SHELL:=/bin/bash
+
 .PHONY: all
 all: test
 
 .PHONY: test
 test: cat
-	./cat text.txt
-	./cat text.txt hello.txt
-	./cat text.txt hi.txt
-	./cat hi.txt
-	./cat text.txt hi.txt hello.txt
+	diff <(cat text.txt) <(./cat text.txt)
+	diff <(cat text.txt hello.txt) <(./cat text.txt hello.txt)
+	diff <(cat filedoesnotexist.txt) <(./cat filedoesnotexist.txt)
+	diff <(cat text.txt filedoesnotexist) <(./cat text.txt filedoesnotexist)
+	diff <(cat text.txt filedoesnotexist.txt hello.txt) <(./cat text.txt filedoesnotexist.txt hello.txt)
+	diff <(cat Hello) <(./cat Hello)
 
 cat: cat.o
 
