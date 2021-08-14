@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
     FILE * fPtr;
     int i = 1;
 
-   while (argc <  2) {
+    while (argc <  2) {
        if (gets(data, stdin) != NULL) {
            puts(data);
        }
@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
 
     for (i=1; i < argc; i++) {
        if (fPtr = fopen(argv[i], "rb")) {
-          if (fgets (data, DATA_SIZE, fPtr) != NULL) {
+          if (fgets(data, DATA_SIZE, fPtr) != NULL) {
 	      printf("%s", data);
 	      fclose(fPtr);
 	  }

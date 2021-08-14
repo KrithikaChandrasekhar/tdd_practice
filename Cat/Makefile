@@ -10,7 +10,6 @@ test: cat
 	diff <(cat filedoesnotexist.txt) <(./cat filedoesnotexist.txt)
 	diff <(cat text.txt filedoesnotexist) <(./cat text.txt filedoesnotexist)
 	diff <(cat text.txt filedoesnotexist.txt hello.txt) <(./cat text.txt filedoesnotexist.txt hello.txt)
-	diff <(cat Hello) <(./cat Hello)
 
 cat: cat.o
 
