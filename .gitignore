@@ -1,9 +1,4 @@
 #Ignore all#
-*
+*.[adios]
+~*
 
-#Unignore files #
-!*.[ch]
-!Makefile
-!*.md
-!*.txt
-!*.bin
