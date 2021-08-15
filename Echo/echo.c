@@ -9,5 +9,5 @@ int main(int argc, char* argv[]) {
             //puts(argv[i]);
        }
    }
-    else puts(" ");
+    else printf("\n");
 }
