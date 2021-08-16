@@ -6,8 +6,7 @@ all: test
 .PHONY: test
 test: echo
 	diff <(echo) <(./echo)
-	diff <(echo foo) <(./echo foo)
-	diff <(echo "foo bar") <(./echo "foo bar")
+	diff <(echo -n "foo bar"| wc -m) <(./echo "foo bar")
 	./echo
 	./echo foo
 	./echo "foo bar"
