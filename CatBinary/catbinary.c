@@ -1,16 +1,25 @@
 #include <stdio.h>
+#include <fcntl.h>
+#include <stdlib.h>
 
-int main( int argc, char *argv[]) {
-    unsigned char buffer [4096];
+#define BUFFER_SIZE 1024
+
+int main(int argc, char *argv[]) {
+    char buffer[BUFFER_SIZE];
     FILE *file;
-    int i = 1;
-    file = fopen(argv[i],"rb");
-       if(fread(buffer, sizeof(buffer), 1, file) != EOF){
-          for(i = 0; i < 4096 ; i++){
-              printf("%x", buffer[i]);
-          }
-          printf("\n");
-       }
-    fclose(file);
-}
+    int c;
 
+
+    if (argc == 1) {
+        while ((c = read(0, buffer, sizeof(buffer))) != 0)
+              write(1, buffer, c);
+    }
+    else {
+          if ((file = open(*++argv, O_RDONLY, 0)) > 0) {
+	       while (c = read(file, buffer, sizeof(buffer)) != 0) {
+		     printf("%s", buffer);
+               }
+               close(file);
+          }
+    }
+}
