@@ -1,27 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
-#define DATA_SIZE 100
+#define BUFFER_SIZE 1024
+
+int buffersize;
 
 int main(int argc, char* argv[]) {
-    char data[DATA_SIZE];
-    FILE * fPtr;
-    int i = 1;
+   void filecopy(int ifd, int ofd);
+   int fd;
+   char *file_name = argv[0];
 
-    while (argc <  2) {
-       if (gets(data, stdin) != NULL) {
-           puts(data);
-       }
-       else break;
-   }
+   if (argc == 1)
+      filecopy(0, 1);
+   else
+       while (--argc > 0)
+            if ((fd = open(*++argv, O_RDONLY, 0)) == -1) {
+                fprintf(stderr, "%s: %s: No such file or directory\n", file_name, *argv);
+            } else {
+                    filecopy(fd, 1);
+                    close(fd);
+            }
+    buffersize = atoi(argv[1]);
+    if (buffersize > BUFFER_SIZE) {
+        fprintf(stderr,"Error: %s: max. buffer size is %d\n",argv[0], BUFFER_SIZE);
+    }
+}
 
-    for (i=1; i < argc; i++) {
-       if (fPtr = fopen(argv[i], "rb")) {
-          if (fgets(data, DATA_SIZE, fPtr) != NULL) {
-	      printf("%s", data);
-	      fclose(fPtr);
-	  }
-	}
-       else fprintf(stderr,"%s: %s: No such file or directory\n", argv[0],argv[i]);
-     }
+void filecopy(int ifd, int ofd)
+{
+    char buffer[BUFFER_SIZE];
+    int c;
+    while ((c = read(ifd, buffer, sizeof(buffer))) != 0)
+            write(ofd, buffer, c);
 }
