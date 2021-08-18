@@ -1,17 +1,20 @@
-# include <stdio.h>
+#include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int main(int argc, char* argv[]) {
-    int i;
-    char str1[]= "Implementing echo";
-    char str2[] = " in c ";
+    int i, n;
 
     if (argc > 1) {
-       for (i = 1; i < argc; i++) {
-            if(argv[i] != NULL)
-               printf("%li\n",strlen(argv[i]));
-       }
-   }
-   else printf("\n");
-//   printf("%s\n",strncat(str1, str2, 3));
+	for (i = 1; i < argc; i++) {
+	     n = strlen(argv[i]);
+	     char *arr = malloc(n* sizeof(char));
+	     if (argv[i] != NULL) {
+		 strncat (arr, argv[i], n);
+		 printf("%s", arr);
+	     }
+	}
+	printf("\n");
+    }
+    else printf("\n");
 }
