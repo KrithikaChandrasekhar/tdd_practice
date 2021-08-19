@@ -4,11 +4,11 @@ SHELL:=/bin/bash
 all: test
 
 .PHONY: test
-test: head
-	diff <(head text.txt) <(./head text.txt)
+test: head_buffer
+	diff <(head text.txt) <(./head_buffer text.txt)
 
-head: head.o
+head: head_buffer.o
 
 .PHONY: clean
 clean::
-	$(RM) head *.[adios]
+	$(RM) head_buffer *.[adios]
