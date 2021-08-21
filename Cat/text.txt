@@ -1,1 +1,12 @@
 This program is an implementation of linux version of cat in c language.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11

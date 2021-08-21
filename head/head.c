@@ -8,9 +8,8 @@ int main(int argc, char* argv[]) {
 	int n = 10;
 
 	if (file = fopen(argv[1], "r")) {
-		while (getline(&line, &len, file) != -1) {
-			if (n == 0) break;
-			else printf("%s", line);
+		while (getline(&line, &len, file) != -1 && n != 0) {
+			printf("%s", line);
 			n--;
 		}
 		fclose(file);

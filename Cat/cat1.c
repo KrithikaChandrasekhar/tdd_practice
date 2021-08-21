@@ -5,10 +5,10 @@
 
 #define BUFFER_SIZE 1024
 
-void filecopy(FILE* ifd, FILE* ofd);
+void filecopy(FILE *ifd, FILE *ofd);
 
 int main(int argc, char* argv[]) {
-	FILE* fd;
+	FILE *fd;
 	char *programName = argv[0];
 
 	if (argc == 1)
@@ -16,21 +16,17 @@ int main(int argc, char* argv[]) {
 	else
 		while (--argc > 0)
 			if ((fd = fopen(*++argv, "r")) == NULL) {
-				fprintf(stderr, "%s: %s: Error:No such file or directory\n", programName, *argv);
+				fprintf(stderr, "%s: %s: Error: No such file or directory\n", programName, *argv);
 			}
 			else {
 				filecopy(fd, stdout);
 				fclose(fd);
 			}
-	/*    buffersize = atoi(argv[1]);
-	      if (buffersize > BUFFER_SIZE) {
-	      fprintf(stderr,"Error: %s: max. buffer size is %d\n",argv[0], BUFFER_SIZE);
-	      }*/
 }
 
-void filecopy(FILE* ifd, FILE*ofd) {
+void filecopy(FILE *ifd, FILE *ofd) {
 	char buffer[BUFFER_SIZE];
 	int numread;
-	while ((fread(buffer, 1, sizeof(char), ifd)))
-		fwrite(buffer, 1, sizeof(char), ofd);
+	while (numread = (fread(buffer, sizeof(char), BUFFER_SIZE, ifd)))
+		fwrite(buffer, numread, sizeof(char), ofd);
 }
