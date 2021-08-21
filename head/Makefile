@@ -5,9 +5,9 @@ all: test
 
 .PHONY: test
 test: head_buffer
-	diff <(head text.txt) <(./head_buffer text.txt)
-
-head: head_buffer.o
+	diff <(head -n 10 text.txt) <(./head_buffer text.txt)
+	diff <(head -n 10 text.txt file1.txt) <(./head_buffer text.txt file1.txt)
+	diff <(head -n 10 text.txt file1.txt filenotindirectory) <(./head_buffer text.txt file1.txt filenotindirectory)
 
 .PHONY: clean
 clean::
