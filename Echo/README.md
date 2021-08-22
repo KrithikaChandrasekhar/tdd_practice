@@ -7,5 +7,5 @@ as reference original (golden master testing).
 
 ## Test cases
 - When calling 'echo' without arguments, then it prints a single new line character.
-- When calling 'echo foo', then it prints "foo" followed by a new line character.
-- When calling 'echo foo bar',then it prints "foo bar" followed by a new line character.
+- When calling echo "foo bar", then it prints "foo bar" followed by a new line character.
+- When calling echo foo bar, then it prints foo bar followed by a new line character.
