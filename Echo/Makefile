@@ -7,9 +7,7 @@ all: test
 test: echo
 	diff <(echo) <(./echo)
 	diff <(echo "foo bar") <(./echo "foo bar")
-	./echo
-	./echo foo
-	./echo "foo bar"
+	diff <(echo foo bar) <(./echo foo bar)
 
 .PHONY: clean
 clean::

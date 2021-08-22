@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <string.h>
+#include <errno.h>
 
 #define BUFFER_SIZE 1024
 
@@ -16,7 +18,7 @@ int main(int argc, char* argv[]) {
 	else
 		while (--argc > 0)
 			if ((fd = fopen(*++argv, "r")) == NULL) {
-				fprintf(stderr, "%s: %s: Error: No such file or directory\n", programName, *argv);
+				fprintf(stderr, "%s: %s: %s\n", programName, *argv, strerror(errno));
 			}
 			else {
 				filecopy(fd, stdout);
