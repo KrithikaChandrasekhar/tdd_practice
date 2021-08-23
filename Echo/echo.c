@@ -5,11 +5,10 @@
 int main(int argc, char* argv[]) {
 	int i, n;
 	char *buffer;
-
-	buffer = malloc(n + 1);
 	if (argc > 1) {
-		for (int i = 1; i < argc; i++) {
+		for(int i = 1; i < argc; i++) {
 			n = strlen(argv[i]);
+			buffer = malloc((n + 1) * sizeof(char));
 		}
 		for(int i = 1; i < argc; i++) {
 			strncat(buffer, argv[i], n);
