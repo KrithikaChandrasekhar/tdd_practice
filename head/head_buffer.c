@@ -9,11 +9,12 @@ int main (int argc, char* argv[]) {
 	FILE *file;
 	char data[DATA_SIZE];
 	int linenum = 10;
-	int stringlen;
 
 	if (argc == 1) {
-		while (fgets(data, sizeof(data), stdin) != NULL)
+		while (linenum != 0 && (fgets(data, sizeof(data), stdin)) != NULL) {
 			fputs(data, stdout);
+			linenum--;
+		}
 	}
 	else
 		for(int i = 1; i < argc; i++) {

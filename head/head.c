@@ -11,8 +11,10 @@ int main(int argc, char* argv[]) {
 	int inputchar;
 
 	if (argc == 1) {
-		while ((inputchar = fgetc(stdin)) != EOF)
+		while (linenum != 0 && (inputchar = fgetc(stdin)) != EOF) {
+			if (inputchar == '\n') linenum--;
 			fputc(inputchar, stdout);
+		}
 	}
 	else
 		for(int i = 1; i < argc; i++) {
