@@ -3,30 +3,43 @@
 #include <errno.h>
 #include <string.h>
 
-int main(int argc, char* argv[]) {
-	FILE *file;
-	char *line = NULL;
-	size_t len = 0;
-	int linenum = 10;
-	int inputchar;
+#define BUFFER_SIZE 1024
 
-	if (argc == 1) {
-		while (linenum != 0 && (inputchar = fgetc(stdin)) != EOF) {
-			if (inputchar == '\n') linenum--;
-			fputc(inputchar, stdout);
-		}
-	}
+void headfile(char *filename);
+void filecopy(FILE *ifd, FILE *ofd);
+
+char *programName;
+int linenum = 10;
+
+int main(int argc, char *argv[]) {
+	programName = argv[0];
+	if (argc == 1)
+		filecopy(stdin, stdout);
 	else
-		for(int i = 1; i < argc; i++) {
-			if ((file = fopen(argv[i], "r")) != NULL) {
-				while (getline(&line, &len, file) != -1 && linenum != 0) {
-					fputs(line, stdout);
-					linenum--;
-				}
-				fclose(file);
-				linenum = 10;
-			}
-			else fprintf(stderr, "%s: %s: %s\n", argv[0], argv[i], strerror(errno));
-		}
+		while (--argc > 0)
+			headfile(*++argv);
 }
+
+void headfile(char *filename) {
+	FILE *fd;
+	if ((fd = fopen(filename, "r")) == NULL) {
+		fprintf(stderr, "%s: %s: %s\n", programName, filename, strerror(errno));
+		return;
+	}
+	filecopy(fd, stdout);
+	fclose(fd);
+	linenum = 10;
+}
+
+void filecopy(FILE *ifd, FILE *ofd) {
+	char buffer[BUFFER_SIZE];
+	ssize_t numread;
+	size_t len = 0;
+	char *line = NULL;
+	while (numread = (fread(buffer, sizeof(char), BUFFER_SIZE, ifd))) {
+		fwrite(buffer, sizeof(char), BUFFER_SIZE, ofd);
+		linenum--;
+	}
+}
+
 

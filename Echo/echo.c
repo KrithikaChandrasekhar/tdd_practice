@@ -3,12 +3,14 @@
 #include <stdlib.h>
 
 int main(int argc, char* argv[]) {
-	int i, n;
 	char *buffer;
+	int n;
+	buffer = malloc((n + 1) * sizeof(char));
+
 	if (argc > 1) {
 		for(int i = 1; i < argc; i++) {
 			n = strlen(argv[i]);
-			buffer = malloc((n + 1) * sizeof(char));
+			printf("%d", n);
 		}
 		for(int i = 1; i < argc; i++) {
 			strncat(buffer, argv[i], n);
