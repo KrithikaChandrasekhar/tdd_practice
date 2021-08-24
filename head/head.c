@@ -3,13 +3,12 @@
 #include <errno.h>
 #include <string.h>
 
-#define BUFFER_SIZE 1024
-
-void headfile(char *filename);
+void headfile(int argcount, char *filename);
 void filecopy(FILE *ifd, FILE *ofd);
 
 char *programName;
 int linenum = 10;
+int argcount;
 
 int main(int argc, char *argv[]) {
 	programName = argv[0];
@@ -17,29 +16,27 @@ int main(int argc, char *argv[]) {
 		filecopy(stdin, stdout);
 	else
 		while (--argc > 0)
-			headfile(*++argv);
+			headfile(argc, *++argv);
 }
 
-void headfile(char *filename) {
+void headfile(int argcount, char *filename) {
 	FILE *fd;
-	if ((fd = fopen(filename, "r")) == NULL) {
+	if ((fd = fopen(filename, "rb")) == NULL) {
 		fprintf(stderr, "%s: %s: %s\n", programName, filename, strerror(errno));
 		return;
 	}
+	if (argcount > 1) printf("==> %s <==\n", filename);
 	filecopy(fd, stdout);
 	fclose(fd);
+	if (argcount > 1 ) printf("\n");
 	linenum = 10;
 }
 
 void filecopy(FILE *ifd, FILE *ofd) {
-	char buffer[BUFFER_SIZE];
-	ssize_t numread;
 	size_t len = 0;
 	char *line = NULL;
-	while (numread = (fread(buffer, sizeof(char), BUFFER_SIZE, ifd))) {
-		fwrite(buffer, sizeof(char), BUFFER_SIZE, ofd);
+	while (linenum != 0 && (getline(&line, &len, ifd) != -1)) {
+		printf("%s", line);
 		linenum--;
 	}
 }
-
-

@@ -4,11 +4,13 @@ SHELL:=/bin/bash
 all: test
 
 .PHONY: test
-test: head_buffer
-	diff <(head -n 10 text.txt) <(./head_buffer text.txt)
-	diff <(head -n 10 text.txt file1.txt) <(./head_buffer text.txt file1.txt)
-	diff <(head -n 10 text.txt file1.txt filenotindirectory) <(./head_buffer text.txt file1.txt filenotindirectory)
+test: head
+	diff <(<text.txt head) <(<text.txt ./head)
+	diff <(head -n 10 text.txt) <(./head text.txt)
+	diff <(head binaryfile.bin) <(./head binaryfile.bin)
+	diff <(head -n 10 text.txt file1.txt) <(./head text.txt file1.txt)
+	diff <(head -n 10 text.txt file1.txt filenotindirectory) <(./head text.txt file1.txt filenotindirectory)
 
 .PHONY: clean
 clean::
-	$(RM) head_buffer *.[adios]
+	$(RM) head *.[adios]
