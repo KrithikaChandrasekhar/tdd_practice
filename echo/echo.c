@@ -1,24 +1,23 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
-int main(int argc, char* argv[]) {
-	char *buffer;
-	int n;
-	buffer = malloc((n + 1) * sizeof(char));
-
-	if (argc > 1) {
+int main(int argc, char *argv[]) {
+	size_t buf_size = 0;
+	for(int i = 1; i < argc; i++) {
+		buf_size += strlen(argv[i]) + 1;
+	}
+	char *buffer = malloc(buf_size + 1);
+	if (buffer != NULL) {
 		for(int i = 1; i < argc; i++) {
-			n = strlen(argv[i]);
-			printf("%d", n);
+			if (i > 1)
+				strncat(buffer, " ", buf_size);
+			strncat(buffer, argv[i], buf_size);
 		}
-		for(int i = 1; i < argc; i++) {
-			strncat(buffer, argv[i], n);
-			if( i < argc - 1) strncat(buffer, " ", n);
-		}
-		printf("%s\n", buffer);
+		puts(buffer);
 		free(buffer);
 	}
-	else printf("\n");
+	else printf("memory not available");
 }
+
 
