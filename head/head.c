@@ -3,32 +3,32 @@
 #include <errno.h>
 #include <string.h>
 
-void headfile(int argcount, char *filename);
+void headfile(int count, int argc, char *filename);
 void filecopy(FILE *ifd, FILE *ofd);
 
 char *programName;
 int linenum = 10;
-int argcount;
 
 int main(int argc, char *argv[]) {
 	programName = argv[0];
 	if (argc == 1)
 		filecopy(stdin, stdout);
 	else
-		while (--argc > 0)
-			headfile(argc, *++argv);
+		for (int count = 1; count < argc; count++)
+			headfile(count, argc, *++argv);
 }
 
-void headfile(int argcount, char *filename) {
+void headfile(int count, int argc, char *filename) {
 	FILE *fd;
 	if ((fd = fopen(filename, "rb")) == NULL) {
-		fprintf(stderr, "%s: %s: %s\n", programName, filename, strerror(errno));
+		fprintf(stderr, "%s: cannot open '%s' for reading: %s\n", programName, filename, strerror(errno));
 		return;
 	}
-	if (argcount > 1) printf("==> %s <==\n", filename);
+	if (argc > 2)
+		printf("==> %s <==\n", filename);
 	filecopy(fd, stdout);
 	fclose(fd);
-	if (argcount > 1 ) printf("\n");
+	if (count < argc - 1) printf("\n");
 	linenum = 10;
 }
 

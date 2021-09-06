@@ -10,4 +10,4 @@
 - When calling 'head' without arguments, then it reads standard input. Also, it reacts to EOF on STDIN.
 - When calling 'head text.txt', then it prints first 10 lines on standard output.
 - When calling 'head text.txt file1.txt', then it prints the file name followed by first 10 lines on standard output.
-- When calling 'head text.txt file1.txt filenotindirectory', then it prints the file name followed by first 10 lines of the files and "head: filenotindirectory: no such file or directory" on the standard output.
+- When calling 'head text.txt file1.txt filenotfound', then it prints the file name followed by first 10 lines of the files and "head: filenotfound: no such file or directory" on the standard output.
