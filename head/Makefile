@@ -7,9 +7,8 @@ all: test
 test: head
 	diff <(<text.txt head) <(<text.txt ./head)
 	diff <(head text.txt) <(./head text.txt)
-	diff <(head binaryfile.bin) <(./head binaryfile.bin)
-	diff <(head text.txt file1.txt) <(./head text.txt file1.txt)
-	diff <(head text.txt file1.txt filenotfound) <(./head text.txt file1.txt filenotfound)
+	diff <(head text.txt binaryfile.bin) <(./head text.txt binaryfile.bin)
+	diff <(head filenotfound binaryfile.bin text.txt) <(./head filenotfound binaryfile.bin text.txt)
 
 .PHONY: clean
 clean::

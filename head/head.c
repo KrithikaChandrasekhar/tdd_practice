@@ -14,8 +14,11 @@ int main(int argc, char *argv[]) {
 	if (argc == 1)
 		filecopy(stdin, stdout);
 	else
-		for (int count = 1; count < argc; count++)
-			headfile(count, argc, *++argv);
+		for (int count = 1; count < argc; count++) {
+			headfile(count, argc, argv[count]);
+			if ((count < argc - 1) && (fopen(argv[count+1], "rb")) && fopen(argv[count], "rb")) printf("\n");
+			linenum = 10;
+		}
 }
 
 void headfile(int count, int argc, char *filename) {
@@ -28,8 +31,6 @@ void headfile(int count, int argc, char *filename) {
 		printf("==> %s <==\n", filename);
 	filecopy(fd, stdout);
 	fclose(fd);
-	if (count < argc - 1) printf("\n");
-	linenum = 10;
 }
 
 void filecopy(FILE *ifd, FILE *ofd) {
